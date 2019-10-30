@@ -11,8 +11,8 @@
 void ENTRY_POINT
 main(void)
 {
-    put_string("Hello World\r\n");
-
-    loop:goto loop;
+    for(;;) {
+        put_string("Hello World!\n");
+    }
 }
 
