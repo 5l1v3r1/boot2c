@@ -17,7 +17,8 @@
 
 /* Holds x and y coordinates */
 struct coords {
-    int x, y;
+    int x;
+    int y;
 };
 
 struct body {
