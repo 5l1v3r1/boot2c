@@ -15,6 +15,7 @@
 /* Duration of a single frame in ticks of the system timer */
 #define FRAME_TICKS 3
 
+/* Holds x and y coordinates */
 struct coords {
     int x, y;
 };
@@ -38,6 +39,7 @@ enum block {
     PT_FRUIT = CL_LIGHT_MAGENTA
 };
 
+/* sets a block with given x,y coordinates */
 static void
 set_block(int x, int y, enum block block)
 {
@@ -84,6 +86,7 @@ add_fruit(void) {
     set_block(c.x, c.y, PT_FRUIT);
 }
 
+/* handles keyboard actions */
 static void
 handle_kbd(enum dir prev_dir, enum dir *next_dir) {
     char sc = check_keystroke() ? (get_keystroke().scancode) : 0;
@@ -143,6 +146,7 @@ main(void)
 {
     set_fs(TEXT_MEM_SEG);
 
+    /* infinite loop */
     for (;;) {
         struct body body;
         enum dir prev_dir = DIR_RIGHT;
