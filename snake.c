@@ -147,7 +147,7 @@ main(void)
     set_fs(TEXT_MEM_SEG);
 
     /* infinite loop */
-    for (;;) {
+    _loop1:
         struct body body;
         enum dir prev_dir = DIR_RIGHT;
         enum dir next_dir = DIR_RIGHT;
@@ -156,7 +156,7 @@ main(void)
         draw_board();
         add_fruit();
 
-        for (;;) {
+        _loop2:
             /* TODO: Handle midnight overflow */
             uint32_t frame_end = get_time() + FRAME_TICKS;
 
@@ -176,7 +176,8 @@ main(void)
             prev_dir = next_dir;
 
             do handle_kbd(prev_dir, &next_dir);
+            
             while (get_time() < frame_end);
-        }
-    }
+        goto _loop2;
+    goto _loop1;
 }
