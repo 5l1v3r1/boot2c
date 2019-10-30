@@ -13,6 +13,6 @@ main(void)
 {
     put_string("Hello World\r\n");
 
-    for (;;);
+    loop:goto loop;
 }
 
